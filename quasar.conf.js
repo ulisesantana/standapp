@@ -4,7 +4,7 @@ module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
-      'axios'
+      'firebase'
     ],
     css: [
       'app.styl'
@@ -61,6 +61,7 @@ module.exports = function (ctx) {
         'QItem',
         'QItemMain',
         'QItemSide',
+        'QToggle',
         'QTabs',
         'QTab',
         'QTabPane',
