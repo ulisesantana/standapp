@@ -1,33 +1,49 @@
 <template>
-  <q-tabs :align="align">
-    <q-route-tab
-      to="/reports"
-      exact
-      slot="title"
-      label="REPORTS"
-    />
-    <q-route-tab
-      to="/"
-      exact
-      slot="title"
-      label="TASKS"
-    />
-  </q-tabs>
+  <v-speed-dial
+    bottom
+    right
+    direction="top"
+    open-on-hover
+    transition="slide-y-reverse-transition"
+    fixed
+  >
+    <v-btn
+      slot="activator"
+      color="blue darken-2"
+      dark
+      fab
+    >
+      <v-icon>account_circle</v-icon>
+      <v-icon>close</v-icon>
+    </v-btn>
+    <v-btn
+      fab
+      dark
+      small
+      v-for="a in actions"
+      :key="actions"
+      :color="a.color"
+    >
+      <v-icon>{{a.icon}}</v-icon>
+    </v-btn>
+  </v-speed-dial>
 </template>
 
 <script>
-export default {
-  name: 'quick-menu',
-  data () {
-    return {
-      align: this.$q.platform.is.desktop ? 'left' : 'justify'
-    }
+  export default {
+    name: 'QuickNav',
+    props: [],
+    data: () => ({
+      actions: [
+        {name: 'edit', link: 'edit', icon: 'edit', color: 'green'},
+        {name: 'add', link: 'add', icon: 'add', color: 'indigo'},
+        {name: 'delete', link: 'delete', icon: 'delete', color: 'red'}
+      ],
+      fab: false,
+      sheet: false
+    })
   }
-}
 </script>
 
 <style scoped>
-  * {
-    text-align: center;
-  }
 </style>
